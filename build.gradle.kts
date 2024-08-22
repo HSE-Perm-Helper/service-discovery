@@ -46,3 +46,11 @@ kotlin {
 tasks.withType<Test> {
     useJUnitPlatform()
 }
+
+tasks.jar {
+    archiveFileName.set("service-discovery.jar")
+}
+
+tasks.bootJar {
+    archiveFileName.set("service-discovery-standalone.jar")
+}
