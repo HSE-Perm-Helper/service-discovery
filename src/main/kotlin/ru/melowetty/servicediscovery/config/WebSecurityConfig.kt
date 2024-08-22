@@ -28,7 +28,7 @@ class WebSecurityConfig(
 
             }
             .authorizeHttpRequests {
-                it.requestMatchers("/eureka").hasRole("SYSTEM")
+                it.requestMatchers("/eureka/**").hasAnyRole("SYSTEM", "ADMIN")
                 it.anyRequest().hasRole("ADMIN")
             }.build()
     }
