@@ -1,4 +1,4 @@
-FROM gradle:8.4.0-jdk17-alpine AS TEMP_BUILD_IMAGE
+FROM gradle:8.10.0-jdk17-jammy as TEMP_BUILD_IMAGE
 
 #build container
 WORKDIR /home/gradle/project
@@ -12,7 +12,7 @@ RUN gradle clean build --no-daemon -x test
 
 # actual container
 FROM openjdk:17-jdk-slim
-ENV ARTIFACT_NAME=app-standalone.jar
+ENV ARTIFACT_NAME=service-discovery-standalone.jar
 ENV APP_HOME=/home/gradle/project
 
 WORKDIR $APP_HOME

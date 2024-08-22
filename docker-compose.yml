@@ -1,0 +1,21 @@
+version: '3.8'
+services:
+  service-discovery:
+    image: melowetty/service-discovery
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 8761:8761
+    env_file: ./.env
+    environment:
+      - SERVICE_DISCOVERY_USER=$SERVICE_DISCOVERY_USER
+      - SERVICE_DISCOVERY_PASSWORD=$SERVICE_DISCOVERY_PASSWORD
+      - SERVICE_DISCOVERY_ADMIN_USER=$SERVICE_DISCOVERY_ADMIN_USER
+      - SERVICE_DISCOVERY_ADMIN_PASSWORD=$SERVICE_DISCOVERY_ADMIN_PASSWORD
+    restart: always
+    networks:
+      - internal
+networks:
+  internal:
+    driver: bridge
